@@ -1,15 +1,19 @@
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
-import { TodoList } from './components/TodoList'
+import { AuthProvider } from './context/AuthContext'
+import { AppRoutes } from './routes'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
-
   return (
-    <>
-      <div className="min-h-screen flex items-start justify-center px-4 py-8">
-      <TodoList />
-    </div>
-    </>
-  )
+    <BrowserRouter>
+      <AuthProvider>
+        <AppRoutes />
+        <ToastContainer position="top-right" autoClose={4000} hideProgressBar={false} newestOnTop={false} closeOnClick pauseOnHover draggable/>
+      </AuthProvider>
+    </BrowserRouter>
+  );
 }
 
 export default App
